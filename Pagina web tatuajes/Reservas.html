@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Uffizi Studio</title>
+    
+    <link rel="stylesheet" href="Decoracion.css"> 
+    <link rel="stylesheet" href="reservas.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="seccion-contacto">
+        <div class="container text-center">
+            <h2 class="titulo-contacto">Contacto</h2>
+            <button class="btn-llamar">Llámanos</button>
+            <p class="subtitulo-contacto">Reserva ya tu cita en nuestro estudio o ven a visitarnos a nuestro estudio</p>
+        </div>
+
+        <div class="container form-container">
+            <form action="#" method="POST" class="formulario-reserva">
+                <div class="form-grid-3">
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="email" name="correo" placeholder="Correo" required>
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                    
+                    <input type="text" name="estilo" placeholder="Estilo">
+                    <input type="text" name="zona" placeholder="Zona">
+                    <input type="text" name="tamano" placeholder="Tamaño en cm">
+                    
+                    <textarea name="mensaje" class="input-full-width" placeholder="Quiero un tatuaje..." required></textarea>
+                </div>
+
+                <div class="legal-checkbox">
+                    <input type="checkbox" id="privacidad" name="privacidad" required>
+                    <label for="privacidad">Acepto los avisos legales y la política de privacidad</label>
+                </div>
+
+                <button type="submit" class="btn-enviar">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
