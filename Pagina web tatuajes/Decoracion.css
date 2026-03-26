@@ -515,3 +515,100 @@ footer {
         grid-column: span 1;
     }
 }
+
+
+/* CSS DE LA PARTE DE ARTISTAS */
+
+.fondo-artistas {
+    height: 70vh;
+    position: relative; 
+    overflow: hidden;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1; 
+}
+
+.fondo-artistas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url(Imagenes/FondoArtistas.png);
+    background-size: cover;
+    background-position: center;
+    z-index: -1; 
+    
+    
+    animation: zoomFondo 15s ease-in-out infinite alternate;
+}
+
+.fondo-artistas h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    color: var(--dorado);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.fondo-artistas h2 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.fondo-artistas p {
+    font-size: 1.1rem;
+    color: var(--blanco);
+}
+
+.artistas-info {
+    background-color: var(--negro-secundario);
+    padding: 60px 0;
+}
+
+.grid-contact-artistas {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.cuadro-artistas h4 {
+    color: var(--dorado);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cuadro-artistas {
+    background-color: #1a1a1a; 
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.cuadro-artistas:hover {
+    border: 1px solid var(--dorado);
+    }
+
+.artistas-info {
+    background-color: var(--negro-secundario);
+    padding: 60px 0;
+}
+
+.foto-artistas {
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.foto-artistas img {
+    width: 500px;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+    }
