@@ -380,3 +380,138 @@ footer {
         height: 350px;
     }
 }
+/* --- SECCIÓN CONTACTO Y FORMULARIO --- */
+.seccion-contacto {
+    padding: 80px 0;
+    /* Al quitar el background, cogerá automáticamente tu fondo negro general */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.titulo-contacto {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    color: var(--dorado); 
+    margin-bottom: 20px;
+}
+
+.btn-llamar {
+    background-color: var(--blanco);
+    color: var(--negro-secundario);
+    border: none;
+    padding: 10px 30px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.btn-llamar:hover {
+    background-color: var(--dorado);
+    color: var(--blanco);
+}
+
+.subtitulo-contacto {
+    color: var(--gris-texto);
+    margin-bottom: 40px;
+}
+
+/* --- CUADRÍCULA DEL FORMULARIO --- */
+.formulario-reserva {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.formulario-reserva input,
+.formulario-reserva textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: var(--blanco);
+    color: var(--negro-secundario);
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+}
+
+.formulario-reserva input::placeholder,
+.formulario-reserva textarea::placeholder {
+    color: #666; 
+}
+
+.formulario-reserva input:focus,
+.formulario-reserva textarea:focus {
+    box-shadow: 0 0 0 2px var(--dorado); 
+}
+
+.input-full-width {
+    grid-column: span 3; 
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* --- CHECKBOX LEGAL CENTRADO --- */
+.legal-checkbox {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 10px;               
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: var(--gris-texto);
+    font-size: 0.9rem;
+    text-align: center;      
+}
+
+.legal-checkbox input[type="checkbox"] {
+    margin: 0;               
+    width: 18px;             
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--dorado); 
+}
+
+.legal-checkbox label {
+    cursor: pointer;
+}
+
+/* --- BOTÓN ENVIAR --- */
+.btn-enviar {
+    width: 100%;
+    background-color: var(--negro-secundario);
+    color: var(--dorado);
+    border: 1px solid var(--dorado);
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: var(--dorado);
+    color: var(--negro-secundario);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .form-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .input-full-width {
+        grid-column: span 1;
+    }
+}
