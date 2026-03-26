@@ -1,0 +1,254 @@
+/* CONFIGURACIÓN GENERAL */
+:root {
+    --negro-fondo: #0a0a0a;
+    --negro-secundario: #141414;
+    --dorado: #c5a02d;
+    --blanco: #ffffff;
+    --gris-texto: #cccccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--negro-fondo);
+    color: var(--blanco);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* NAVEGACIÓN */
+header {
+    background-color: var(--negro-secundario);
+    padding: 15px 0; 
+    border-bottom: 2px solid var(--dorado);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);  
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+    text-decoration: none;
+}
+
+
+.logo-img {
+    height: 65px; 
+    width: auto;  
+}
+
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dorado);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--dorado);
+}
+
+
+.hero {
+    height: 70vh;
+    position: relative; 
+    overflow: hidden;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1; 
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url(Imagenes/hero-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1; 
+    
+    
+    animation: zoomFondo 15s ease-in-out infinite alternate;
+}
+
+
+@keyframes zoomFondo {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); } 
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    color: var(--dorado);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.hero h2 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--blanco);
+}
+
+
+.content-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.content-section h3 {
+    color: var(--dorado);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.content-section p {
+    color: var(--gris-texto);
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+
+.contact-info {
+    background-color: var(--negro-secundario);
+    padding: 60px 0;
+}
+
+.grid-contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.info-card h4 {
+    color: var(--dorado);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.legal a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+
+@media (max-width: 768px) {
+    .header-flex { flex-direction: column; gap: 15px; }
+    .nav-links { flex-direction: column; align-items: center; gap: 10px; }
+    .hero h1 { font-size: 2rem; }
+}
+
+
+.galeria-container {
+    padding: 50px 0;
+    background-color: var(--negro-puro);
+}
+
+.grid-galeria {
+    display: grid;
+    /* Creamos 3 columnas iguales */
+    grid-template-columns: repeat(3, 1fr);
+    /* Altura automática de las filas */
+    grid-auto-rows: 250px;
+    gap: 10px; /* Espacio entre fotos */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.foto-item {
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.foto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+
+.foto-item:hover img {
+    transform: scale(1.1); 
+    filter: brightness(0.7); 
+}
+
+
+.foto-item.grande {
+    grid-row: span 2;
+}
+
+
+@media (max-width: 768px) {
+    .grid-galeria {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
+    }
+    .foto-item.grande {
+        grid-row: span 1;
+    }
+}
+
