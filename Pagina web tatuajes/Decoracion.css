@@ -252,3 +252,49 @@ footer {
     }
 }
 
+/* ESTILOS ESPECÍFICOS PARA QUIENES SOMOS */
+
+/* Contenedor de historia con imagen */
+.nosotros-flex {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.nosotros-texto {
+    flex: 1;
+}
+
+.nosotros-img {
+    flex: 1;
+    border: 2px solid var(--dorado);
+    box-shadow: 10px 10px 0px var(--dorado);
+}
+
+.nosotros-img img {
+    width: 100%;
+    display: block;
+}
+
+/* Ajuste para las tarjetas de valores */
+.info-card {
+    background-color: #1a1a1a; /* Un gris ligeramente más claro que el fondo */
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.info-card:hover {
+    border: 1px solid var(--dorado);
+}
+
+/* Responsivo para la sección nosotros */
+@media (max-width: 768px) {
+    .nosotros-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+}
