@@ -612,3 +612,61 @@ footer {
     object-fit: cover; 
     transition: transform 0.5s ease;
     }
+
+body {
+    background-color: var(--negro-fondo);
+    color: var(--blanco);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    
+    cursor: url('Imagenes/Maquinilla.png \(1\).png') 0 0, auto;
+}
+
+a, button, .btn-llamar, .btn-enviar, .cuadro-artistas, .foto-item, .legal-checkbox label {
+    cursor: url('Imagenes/cursor-maquina.png'), pointer;
+}
+
+a, button, input[type="submit"], summary {
+    cursor: inherit;
+}
+
+:root {
+    /* 60% */
+    --color-dominante: #121212; 
+
+    /* 30% */
+    --color-secundario: #2A2A2A; 
+
+    /* 10% */
+    --color-acento: #D4AF37; 
+
+    /* Un color extra para el texto general, asegurando un buen contraste */
+    --text-principal: #F5F5F5;
+}
+
+/* EL 60% (El Dominante) */
+body {
+    background-color: var(--color-dominante);
+    color: var(--text-principal);
+}
+
+/* EL 30% (El Secundario) */
+header, 
+footer, 
+.info-card, 
+.cuadro-artistas {
+    background-color: var(--color-secundario);
+    
+}
+
+/* EL 10% (El Acento) */
+a {
+    color: var(--color-acento);
+}
+
+.btn-enviar, 
+.btn-llamar {
+    background-color: var(--color-acento);
+    color: #000; 
+    border: none;
+}
