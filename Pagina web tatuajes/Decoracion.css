@@ -1,10 +1,10 @@
 /* CONFIGURACIÓN GENERAL */
 :root {
     --negro-fondo: #0a0a0a;
-    --negro-secundario: #141414;
-    --dorado: #c5a02d;
-    --blanco: #ffffff;
-    --gris-texto: #cccccc;
+    --negro-secundario: #000000;
+    --dorado: #b10a2e;
+    --blanco: #b10a2e;
+    --gris-texto: #8f0f0f;
 }
 
 * {
@@ -16,7 +16,7 @@
 body {
     background-color: var(--negro-fondo);
     color: var(--blanco);
-    font-family: 'Open Sans', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     line-height: 1.6;
 }
 
@@ -58,7 +58,7 @@ header {
 
 
 .logo-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     color: var(--dorado);
     font-weight: 700;
     font-size: 1.4rem;
@@ -105,7 +105,7 @@ header {
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url(Imagenes/hero-bg.jpg);
+                url(Imagenes/d98a3e65588903.5af9d9803eaea.gif);
     background-size: cover;
     background-position: center;
     z-index: -1; 
@@ -121,7 +121,7 @@ header {
 }
 
 .hero h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     font-size: 3.5rem;
     color: var(--dorado);
     margin-bottom: 10px;
@@ -147,7 +147,7 @@ header {
 
 .content-section h3 {
     color: var(--dorado);
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     font-size: 2rem;
     margin-bottom: 30px;
 }
@@ -175,7 +175,7 @@ header {
     color: var(--dorado);
     text-transform: uppercase;
     margin-bottom: 15px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
 }
 
 
@@ -308,7 +308,7 @@ footer {
 }
 
 .titulo-ubicacion {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     font-size: 3rem;
     color: var(--dorado);
     margin-bottom: 20px;
@@ -338,7 +338,7 @@ footer {
 }
 
 .info-direccion h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     color: var(--dorado);
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -391,7 +391,7 @@ footer {
 }
 
 .titulo-contacto {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     font-size: 3rem;
     color: var(--dorado); 
     margin-bottom: 20px;
@@ -403,7 +403,7 @@ footer {
     border: none;
     padding: 10px 30px;
     font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     font-weight: 700;
     cursor: pointer;
     margin-bottom: 15px;
@@ -440,7 +440,7 @@ footer {
     border: none;
     background-color: var(--blanco);
     color: var(--negro-secundario);
-    font-family: 'Open Sans', sans-serif;
+    font-family: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" sans-serif;
     outline: none;
 }
 
@@ -632,16 +632,16 @@ a, button, input[type="submit"], summary {
 
 :root {
     /* 60% */
-    --color-dominante: #121212; 
+    --color-dominante: #d6d2d2; 
 
     /* 30% */
-    --color-secundario: #2A2A2A; 
+    --color-secundario: #000000; 
 
     /* 10% */
-    --color-acento: #D4AF37; 
+    --color-acento: #f82a2a; 
 
     /* Un color extra para el texto general, asegurando un buen contraste */
-    --text-principal: #F5F5F5;
+    --text-principal: #860707 ;
 }
 
 /* EL 60% (El Dominante) */
@@ -669,4 +669,41 @@ a {
     background-color: var(--color-acento);
     color: #000; 
     border: none;
+}
+
+/* CSS DE LA PARTE DE PIERCINGS*/
+
+.fondo-piercings {
+    height: 70vh;
+    position: relative; 
+    overflow: hidden;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1; 
+}
+.fondo-piercings::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url(Imagenes/Piercings.gif);
+    background-size: cover;
+    background-position: center;
+    z-index: -1; 
+    
+    
+    animation: zoomFondo 15s ease-in-out infinite alternate;
+}
+
+h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
 }
