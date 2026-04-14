@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Decoracion.css">
+    <title>Artistas</title>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+        <a href="Inicio.html" class="logo-container">
+            <img src="Imagenes/Logo.png" alt="Logo de ejemplo" class="logo-img">
+            <span class="logo-text">Tatuajes</span>
+        </a>
+            <nav>
+    <ul class="nav-links">
+        <li><a href="Inicio.html">Inicio</a></li>
+        <li><a href="piercings.html">Piercings</a></li> 
+        <li><a href="Reservas.html">Reservas</a></li>
+        <li><a href="Quienes somos.html">Quiénes Somos</a></li>
+        <li><a href="Dondeestamos.html">Ubicacion</a></li>
+    </ul>
+</nav>
+        </div>
+    </header>
+
+        <section class="fondo-artistas">
+        <div class="fondo-artistas-contenido">
+            <h1>Nuestros Artistas</h1>
+            <h2>Sin ellos nada sería posible</h2    >
+        </div>
+    </section>
+
+    <main class="container content-section">
+        <h3>Artistas de Tienda de Tatuaje</h3>
+        <p>Elige a tu tatuador </p>
+        <p>Todos con un nivel cualificado</p>
+    </main>
+
+        <section class="artistas-info">
+        <div class="container">
+            <h3 style="text-align: center; color: var(--dorado); font-family: 'Montserrat', sans-serif; margin-bottom: 40px; font-size: 2rem;">Nuestros Artistas</h3>
+            <div class="grid-contact-artistas">
+
+                <div class="cuadro-artistas" onclick="toggleGaleria('art1')">
+                    <h4>Artista Numero 1</h4>
+                    <div class="foto-artistas">
+                            <img src="Imagenes/Artista1.png" alt="artista1">
+                    </div>
+                    <p>Especializado en diseños realistas</p>
+                </div>
+
+                <div class="cuadro-artistas" onclick="toggleGaleria('art2')">
+                    <h4>Artista Numero 2</h4>
+                    <div class="foto-artistas">
+                            <img src="Imagenes/Artista2.png" alt="artista2">
+                    </div>
+                    <p>Especializada en diseños de acuarela</p>
+                </div>
+
+                <div class="cuadro-artistas" onclick="toggleGaleria('art3')">
+                    <h4>Artista Numero 3</h4>
+                    <div class="foto-artistas">
+                            <img src="Imagenes/Artista3.png" alt="artista3">
+                    </div>
+                    <p>Especializado en diseños de puntillismo</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
