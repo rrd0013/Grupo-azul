@@ -39,16 +39,5 @@
         </div>
     </section>
 
-    <script>
-        document.getElementById('form-acceso').addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita que la página se recargue antes de tiempo
-            
-            // Guardamos en la memoria del navegador que el usuario ya entró
-            localStorage.setItem('usuarioLogueado', 'true');
-            
-            // Redirigimos al perfil
-            window.location.href = 'perfil.html';
-        });
-    </script>
         <script src="script.js"></script>
 </body>
