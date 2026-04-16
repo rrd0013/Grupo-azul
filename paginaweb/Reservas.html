@@ -17,19 +17,19 @@
     <header>
         <div class="container header-flex">
         <a href="Inicio.html" class="logo-container">
-            <img src="Imagenes/Logo.png" alt="Logo de ejemplo" class="logo-img">
+            <img src="Imagenes/Logo.png" alt="Logo de Uffizi Studio" class="logo-img">
             <span class="logo-text">Tatuajes</span>
         </a>
             <nav>
-    <ul class="nav-links">
-        <li><a href="Inicio.html">Inicio</a></li>
-        <li><a href="artistas.html">Artistas</a></li>
-        <li><a href="piercings.html">Piercings</a></li> 
-        <li id="menu-reservas"><a href="Reservas.html">Reservas</a></li>
-        <li id="menu-perfil"><a href="perfil.html">Mi Perfil</a></li>
-        <li id="menu-login"><a href="login.html" style="color: var(--dorado);">ENTRAR</a></li>
-    </ul>
-</nav>
+                <ul class="nav-links">
+                    <li><a href="Inicio.html">Inicio</a></li>
+                    <li><a href="artistas.html">Artistas</a></li>
+                    <li><a href="piercings.html">Piercings</a></li> 
+                    <li id="menu-reservas"><a href="Reservas.html">Reservas</a></li>
+                    <li id="menu-perfil"><a href="perfil.html">Mi Perfil</a></li>
+                    <li id="menu-login"><a href="login.html" style="color: var(--dorado);">ENTRAR</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -37,12 +37,28 @@
         <div class="container text-center">
             <h2 class="titulo-contacto">Reservas</h2>
             <button class="btn-llamar">Llámanos</button>
-            <p class="subtitulo-contacto">Reserva ya tu cita en nuestro estudio o ven a visitarnos a nuestro estudio</p>
+            <p class="subtitulo-contacto">Reserva ya tu cita en nuestro estudio o ven a visitarnos</p>
         </div>
 
         <div class="container form-container">
             <form action="#" method="POST" class="formulario-reserva">
+                
                 <div class="form-grid-3">
+                    <select name="artista" id="artista" required>
+                        <option value="" disabled selected>1. Elige un Artista</option>
+                        <option value="hugo">Hugo (Realismo)</option>
+                        <option value="sofia">Sofía (Tradicional)</option>
+                        <option value="leo">Leo (Blackwork)</option>
+                        <option value="carmen">Carmen (Minimalista)</option>
+                    </select>
+
+                    <input type="button" id="btn-abrir-calendario" class="btn-abrir-calendario" value="📅 2. Seleccionar Día">
+                    <input type="hidden" name="fecha" id="fecha" required>
+                    
+                    <select name="hora" id="hora" required>
+                        <option value="" disabled selected>3. Selecciona fecha primero</option>
+                    </select>
+
                     <input type="text" name="nombre" placeholder="Nombre" required>
                     <input type="email" name="correo" placeholder="Correo" required>
                     <input type="tel" name="telefono" placeholder="Teléfono" required>
@@ -50,19 +66,36 @@
                     <input type="text" name="estilo" placeholder="Estilo">
                     <input type="text" name="zona" placeholder="Zona">
                     <input type="text" name="tamano" placeholder="Tamaño en cm">
-                    
-                    <textarea name="mensaje" class="input-full-width" placeholder="Quiero un tatuaje..." required></textarea>
                 </div>
+                
+                <textarea name="mensaje" class="input-full-width" placeholder="Quiero un tatuaje..." required style="margin-top: 15px;"></textarea>
 
-                <div class="legal-checkbox">
+                <div class="legal-checkbox" style="margin-top: 15px;">
                     <input type="checkbox" id="privacidad" name="privacidad" required>
                     <label for="privacidad">Acepto los avisos legales y la política de privacidad</label>
                 </div>
 
-                <button type="submit" class="btn-enviar">ENVIAR</button>
+                <button type="submit" class="btn-enviar" style="margin-top: 15px;">ENVIAR</button>
             </form>
         </div>
     </section>
+
+    <div id="fondo-modal" class="modal-fondo">
+        <div class="ventana-calendario calendario-custom">
+            <button id="btn-cerrar-calendario" class="btn-cerrar-modal">&times;</button>
+            
+            <div class="calendario-header">
+                <button id="mes-prev" type="button">&lt;</button>
+                <h3 id="mes-actual" style="color:white; margin:0;">Mes</h3>
+                <button id="mes-next" type="button">&gt;</button>
+            </div>
+            <div class="calendario-dias-semana">
+                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
+            </div>
+            <div class="calendario-grid" id="calendario-dias"></div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
