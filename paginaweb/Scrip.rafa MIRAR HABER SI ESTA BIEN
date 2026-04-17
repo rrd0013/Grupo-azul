@@ -1,0 +1,151 @@
+// ==========================================
+// 1. LÓGICA DEL MENÚ Y SESIÓN
+// ==========================================
+function actualizarMenu() {
+    // Comprobamos la "llave" en la memoria del navegador
+    const sesionIniciada = localStorage.getItem('usuarioLogueado') === 'true';
+
+    const btnReservas = document.getElementById('menu-reservas');
+    const btnPerfil = document.getElementById('menu-perfil');
+    const btnLogin = document.getElementById('menu-login');
+
+    // Usamos display 'flex' o 'block' según tu diseño de CSS
+    if (sesionIniciada) {
+        if(btnReservas) btnReservas.style.display = 'block';
+        if(btnPerfil) btnPerfil.style.display = 'block';
+        if(btnLogin) btnLogin.style.display = 'none';
+    } else {
+        if(btnReservas) btnReservas.style.display = 'none';
+        if(btnPerfil) btnPerfil.style.display = 'none';
+        if(btnLogin) btnLogin.style.display = 'block';
+    }
+}
+
+// ==========================================
+// 2. LÓGICA DEL CALENDARIO Y RESERVAS
+// ==========================================
+function configurarReservas() {
+    const artistaSelect = document.getElementById("artista");
+    const horaSelect = document.getElementById("hora");
+    const fechaInputOculto = document.getElementById("fecha");
+    
+    const btnAbrirModal = document.getElementById('btn-abrir-calendario');
+    const fondoModal = document.getElementById('fondo-modal');
+    const btnCerrarModal = document.getElementById('btn-cerrar-calendario');
+    
+    const calendarioDias = document.getElementById("calendario-dias");
+    const mesActualTexto = document.getElementById("mes-actual");
+    const btnPrev = document.getElementById("mes-prev");
+    const btnNext = document.getElementById("mes-next");
+
+    // Si no estamos en la página de reservas, salimos sin dar error
+    if (!artistaSelect || !btnAbrirModal || !fondoModal || !calendarioDias) return;
+
+    let fechaMostrada = new Date(); 
+    let fechaSeleccionada = null; 
+    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+    const horasDisponibles = ["10:00", "11:00", "12:00", "16:00", "17:00", "18:00", "19:00"];
+    const reservasSimuladas = {
+        "hugo": { "2026-04-20": ["10:00", "16:00"], "2026-04-21": ["11:00", "12:00"] },
+        "sofia": { "2026-04-20": ["17:00", "18:00"] },
+        "leo": { "2026-04-22": ["10:00", "11:00", "12:00"] },
+        "carmen": {} 
+    };
+
+    function renderizarCalendario() {
+        calendarioDias.innerHTML = "";
+        const año = fechaMostrada.getFullYear();
+        const mes = fechaMostrada.getMonth();
+        mesActualTexto.textContent = `${meses[mes]} ${año}`;
+
+        let primerDiaMes = new Date(año, mes, 1).getDay();
+        primerDiaMes = (primerDiaMes === 0) ? 6 : primerDiaMes - 1; 
+
+        const diasEnMes = new Date(año, mes + 1, 0).getDate();
+        const hoy = new Date();
+        hoy.setHours(0,0,0,0);
+
+        for (let i = 0; i < primerDiaMes; i++) {
+            calendarioDias.appendChild(document.createElement("div"));
+        }
+
+        for (let i = 1; i <= diasEnMes; i++) {
+            const diaDiv = document.createElement("div");
+            diaDiv.classList.add("calendario-dia");
+            diaDiv.textContent = i;
+
+            const mesStr = (mes + 1).toString().padStart(2, '0');
+            const diaStr = i.toString().padStart(2, '0');
+            const fechaString = `${año}-${mesStr}-${diaStr}`;
+            const fechaDeEsteDiv = new Date(año, mes, i);
+
+            if (fechaDeEsteDiv < hoy) {
+                diaDiv.classList.add("disabled");
+            } else {
+                if (fechaSeleccionada === fechaString) diaDiv.classList.add("seleccionado");
+
+                diaDiv.addEventListener("click", () => {
+                    document.querySelectorAll(".calendario-dia").forEach(el => el.classList.remove("seleccionado"));
+                    diaDiv.classList.add("seleccionado");
+                    fechaSeleccionada = fechaString;
+                    if(fechaInputOculto) fechaInputOculto.value = fechaString;
+                    
+                    // Si el botón es un input, usamos .value; si es otro elemento, usamos .textContent
+                    if(btnAbrirModal.tagName === "INPUT") {
+                        btnAbrirModal.value = `📅 ${diaStr}/${mesStr}/${año}`;
+                    } else {
+                        btnAbrirModal.textContent = `📅 ${diaStr}/${mesStr}/${año}`;
+                    }
+                    
+                    fondoModal.style.display = 'none';
+                    actualizarHorario();
+                });
+            }
+            calendarioDias.appendChild(diaDiv);
+        }
+    }
+
+    function actualizarHorario() {
+        const artista = artistaSelect.value;
+        const fecha = fechaInputOculto ? fechaInputOculto.value : "";
+
+        horaSelect.innerHTML = '<option value="" disabled selected>3. Elige una hora</option>';
+
+        if (!artista || !fecha) return;
+
+        const horasReservadas = (reservasSimuladas[artista] && reservasSimuladas[artista][fecha]) || [];
+
+        horasDisponibles.forEach(hora => {
+            const opcion = document.createElement("option");
+            opcion.value = hora;
+            if (horasReservadas.includes(hora)) {
+                opcion.textContent = `${hora} - (Ocupado)`;
+                opcion.disabled = true;
+            } else {
+                opcion.textContent = `${hora} - Libre`;
+            }
+            horaSelect.appendChild(opcion);
+        });
+    }
+
+    // Eventos
+    if(btnAbrirModal) btnAbrirModal.addEventListener('click', (e) => { e.preventDefault(); fondoModal.style.display = 'flex'; });
+    if(btnCerrarModal) btnCerrarModal.addEventListener('click', () => fondoModal.style.display = 'none');
+    window.addEventListener('click', (e) => { if (e.target === fondoModal) fondoModal.style.display = 'none'; });
+    if(btnPrev) btnPrev.addEventListener("click", () => { fechaMostrada.setMonth(fechaMostrada.getMonth() - 1); renderizarCalendario(); });
+    if(btnNext) btnNext.addEventListener("click", () => { fechaMostrada.setMonth(fechaMostrada.getMonth() + 1); renderizarCalendario(); });
+    artistaSelect.addEventListener("change", actualizarHorario);
+
+    renderizarCalendario();
+}
+
+// ==========================================
+// 3. INICIALIZACIÓN
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarMenu();
+    configurarReservas();
+});
+
+window.addEventListener('pageshow', actualizarMenu);
