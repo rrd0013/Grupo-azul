@@ -28,7 +28,6 @@ body {
     color: var(--text-principal);
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    /* Cursor personalizado eliminado: ahora usa el estándar */
 }
 
 h1, h2, h3 {
@@ -40,6 +39,22 @@ h1, h2, h3 {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+/* =========================================
+    ANIMACION DE FADE IN
+   ========================================= */
+
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 2s ease;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* =========================================
    NAVEGACIÓN (HEADER)
@@ -104,7 +119,7 @@ header {
 }
 
 /* =========================================
-   SECCIÓN HERO (INICIO)
+    SECCIÓN HERO (INICIO)
    ========================================= */
 .hero {
     height: 70vh;
