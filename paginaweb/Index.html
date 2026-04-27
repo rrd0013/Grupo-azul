@@ -127,6 +127,67 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+    <button id="brt-toggle" aria-label="Abrir chat" title="¿Tienes alguna pregunta?">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<div id="brt-window" role="dialog" aria-label="Chat Black Raw Tattoo Studio">
+  <div id="brt-header">
+    <div class="brt-logo-dot"></div>
+    <h2>BLACK RAW TATTOO</h2>
+    <span>online</span>
+  </div>
+  <div id="brt-messages"></div>
+  <div id="brt-quick">
+    <button class="brt-chip" onclick="askChip('Horario')">Horario</button>
+    <button class="brt-chip" onclick="askChip('Cita')">Pedir cita</button>
+    <button class="brt-chip" onclick="askChip('Precios')">Precios</button>
+    <button class="brt-chip" onclick="askChip('Estilos')">Estilos</button>
+    <button class="brt-chip" onclick="askChip('Piercings')">Piercings</button>
+  </div>
+  <div id="brt-input-row">
+    <input id="brt-input" type="text" placeholder="Escribe tu pregunta..." maxlength="200" />
+    <button id="brt-send" aria-label="Enviar">➤</button>
+  </div>
+</div>
+
+<script>
+  const FAQ = [
+    { keys: ['horario','hora','abierto','abrir','cierra','cuando','horarios','abre','abris'], answer: 'Nuestro horario es de <strong>10:00 a 19:00h</strong>, de lunes a sábado. ¡Te esperamos! 🖤' },
+    { keys: ['cita','reserva','reservar','pedir','apuntarme','appointment','turno','agenda'], answer: 'Puedes pedir tu cita a través del <strong>formulario de nuestra web</strong>. Rellénalo y nos pondremos en contacto contigo para confirmar. 📋' },
+    { keys: ['precio','coste','cuesta','cobran','tarifas','presupuesto','cuanto','vale','euros'], answer: 'El precio depende del <strong>tamaño, estilo y detalle</strong> de cada diseño. Rellena el formulario de cita y te damos un presupuesto personalizado sin compromiso. 💰' },
+    { keys: ['estilo','estilos','tipo','tipos','haceis','hacen','especialidad','realismo','tradicional','blackout','minimalista','minimal'], answer: 'Trabajamos los siguientes estilos:\n• <strong>Realismo</strong>\n• <strong>Tradicional</strong>\n• <strong>Blackout</strong>\n• <strong>Minimalista</strong>\n\n¿Tienes algún estilo en mente? 🎨' },
+    { keys: ['piercing','piercings','pendiente','perforacion','perforación','aro','nariz','oreja','cartílago'], answer: '¡Sí, también hacemos <strong>piercings</strong>! Pide tu cita a través del formulario y te informamos de todo. 💎' },
+    { keys: ['donde','ubicacion','ubicación','direccion','dirección','lugar','sitio','local','estudio'], answer: 'Para conocer nuestra ubicación exacta, visita nuestra web o contáctanos a través del formulario. 📍' },
+    { keys: ['contacto','contactar','hablar','llamar','telefono','teléfono','whatsapp','instagram','redes'], answer: 'Puedes contactarnos a través del <strong>formulario de la web</strong> o nuestras redes sociales. ¡Respondemos rápido! 📲' },
+    { keys: ['tatuaje','tattoo','tatoo','tatuar','diseño','diseño','personalizado'], answer: 'Hacemos tatuajes <strong>personalizados</strong> en estilos realismo, tradicional, blackout y minimalista. Cuéntanos tu idea en el formulario y la hacemos realidad. 🖊️' },
+    { keys: ['hola','buenas','saludos','hey','hi','hello','buenos días','buenas tardes','buenas noches','ola'], answer: '¡Hola! 👋 Bienvenido/a a <strong>Black Raw Tattoo Studio</strong>. ¿En qué puedo ayudarte?' },
+    { keys: ['gracias','gràcies','thank','thx','mola','genial','perfecto','ok','vale','guay'], answer: '¡De nada! Si tienes más dudas, aquí estoy. 🖤' }
+  ];
+  const FALLBACK = 'No tengo esa información ahora mismo. Te recomiendo <strong>rellenar nuestro formulario</strong> de contacto y te responderemos enseguida. 🖤';
+  const win = document.getElementById('brt-window'), msgs = document.getElementById('brt-messages'), input = document.getElementById('brt-input'), btn = document.getElementById('brt-send'), tog = document.getElementById('brt-toggle');
+  let opened = false;
+  function getAnswer(text) {
+    const t = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    for (const faq of FAQ) { if (faq.keys.some(k => t.includes(k))) return faq.answer; } return FALLBACK;
+  }
+  function addMsg(html, role) {
+    const el = document.createElement('div'); el.className = 'brt-msg ' + role; el.innerHTML = html; msgs.appendChild(el); msgs.scrollTop = msgs.scrollHeight;
+  }
+  function send(text) {
+    if (!text.trim()) return; addMsg(text, 'user'); input.value = ''; setTimeout(() => addMsg(getAnswer(text), 'bot'), 350);
+  }
+  function askChip(topic) { send(topic); }
+  btn.addEventListener('click', () => send(input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') send(input.value); });
+  tog.addEventListener('click', () => {
+    opened = !opened; win.classList.toggle('open', opened);
+    if (opened && msgs.children.length === 0) setTimeout(() => addMsg('¡Hola! 👋 Soy el asistente de <strong>Black Raw Tattoo Studio</strong>. ¿En qué puedo ayudarte hoy?', 'bot'), 200);
+    tog.innerHTML = opened ? `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>` : `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+  });
+</script>
 </body>
 </html>
 
