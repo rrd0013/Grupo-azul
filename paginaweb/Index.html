@@ -152,8 +152,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <button id="brt-send" aria-label="Enviar">➤</button>
   </div>
 </div>
-
-<script>
+    
+</script>
+    <script>
+(function() {
   const FAQ = [
     { keys: ['horario','hora','abierto','abrir','cierra','cuando','horarios','abre','abris'], answer: 'Nuestro horario es de <strong>10:00 a 19:00h</strong>, de lunes a sábado. ¡Te esperamos! 🖤' },
     { keys: ['cita','reserva','reservar','pedir','apuntarme','appointment','turno','agenda'], answer: 'Puedes pedir tu cita a través del <strong>formulario de nuestra web</strong>. Rellénalo y nos pondremos en contacto contigo para confirmar. 📋' },
@@ -187,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (opened && msgs.children.length === 0) setTimeout(() => addMsg('¡Hola! 👋 Soy el asistente de <strong>Black Raw Tattoo Studio</strong>. ¿En qué puedo ayudarte hoy?', 'bot'), 200);
     tog.innerHTML = opened ? `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>` : `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
   });
+})();
 </script>
 </body>
 </html>
