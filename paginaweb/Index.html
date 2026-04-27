@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function send(text) {
     if (!text.trim()) return; addMsg(text, 'user'); input.value = ''; setTimeout(() => addMsg(getAnswer(text), 'bot'), 350);
   }
-  function askChip(topic) { send(topic); }
+  window.askChip = function(topic) { send(topic); };
   btn.addEventListener('click', () => send(input.value));
   input.addEventListener('keydown', e => { if (e.key === 'Enter') send(input.value); });
   tog.addEventListener('click', () => {
