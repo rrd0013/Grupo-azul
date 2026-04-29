@@ -54,27 +54,35 @@
         }
     </style>
     <br>
-    <div class="grid-galeria fade">
-        <a href="Imagenes/tatuaje5.jpg" class="foto-item grande ">
+<div class="carousel-cuadro fade">
+
+        <button class="prev">&#10094;</button>
+<div class="carousel">
+    <div class="carousel-images">
+        <a href="Imagenes/tatuaje5.jpg">
             <img src="Imagenes/tatuaje5.jpg" alt="Tattoo Cara">
         </a>
         
-        <a href="Imagenes/tatuaje1.jpg" class="foto-item">
-            <img src="Imagenes/tatuaje1.jpg" alt="Tattoo brazo">
+        <a href="Imagenes/tatuaje1.jpg">
+            <img src="Imagenes/tatuaje1.jpg" alt="Tattoo brazo" class="active">
         </a>
 
-        <a href="Imagenes/tatuaje2.jpg" class="foto-item">
+        <a href="Imagenes/tatuaje2.jpg">
             <img src="Imagenes/tatuaje2.jpg" alt="Tattoo Pecho">
         </a>
 
-        <a href="Imagenes/tatuaje3.jpg" class="foto-item">
+        <a href="Imagenes/tatuaje3.jpg">
             <img src="Imagenes/tatuaje3.jpg" alt="Tattoo Mariposa">
         </a>
 
-        <a href="Imagenes/tatuaje4.jpg" class="foto-item">
+        <a href="Imagenes/tatuaje4.jpg">
             <img src="Imagenes/tatuaje4.jpg" alt="Piercing">
         </a>
     </div>
+</div>
+        <button class="next">&#10095;</button>
+        
+</div>
 </section>
 
     <section class="contact-info">
@@ -190,6 +198,31 @@ document.addEventListener('DOMContentLoaded', function() {
     tog.innerHTML = opened ? `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>` : `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
   });
 })();
+</script>
+
+<script>
+const track = document.querySelector(".carousel-images");
+const images = document.querySelectorAll(".carousel-images img");
+
+let index = 0;
+
+function updateCarousel() {
+  track.style.transform = `translateX(-${index * 400}px)`; 
+}
+
+document.querySelector(".next").addEventListener("click", () => {
+    if (index < images.length - 1) {
+    index++;
+    }
+    updateCarousel();
+});
+
+document.querySelector(".prev").addEventListener("click", () => {
+    if (index > 0) {
+    index--;
+    }
+    updateCarousel();
+});
 </script>
 
 <script src="animaciones.js"></script>
