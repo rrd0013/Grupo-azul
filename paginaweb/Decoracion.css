@@ -41,23 +41,101 @@ h1, h2, h3 {
 }
 
 /* =========================================
-    ANIMACION DE FADE IN
+    ANIMACION DE LINEAS
    ========================================= */
 
-.fade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 2s ease;
+.scroll-container {
+height: 125vh;          
+position: relative;
 }
 
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0);
+.titulo-revelado {
+position: absolute;
+top: 15%;                  
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 2.5rem;
+z-index: 3;
+text-align: center;
+pointer-events: none;
+text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.revelado-tattoo {
+position: sticky;
+top: 0;
+width: 90%;
+max-width: 600px;
+height: 100vh;          
+margin: 0 auto;        
+overflow: hidden;
+}
+
+.imagenes-reveladas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.imagen-revelada {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(0);
+transform-origin: center center;
+height: 500px;        
+width: 500px;            
+max-width: 100%;        
+display: block;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease;
+will-change: transform;
+object-fit: cover;
+}
+
+.imagen-revelada.activa {
+opacity: 1;
+visibility: visible;
+}
+
+.btn-carrusel {
+position: absolute;
+top: 50%;
+background: rgba(0,0,0,0.5);
+color: white;
+border: none;
+font-size: 2rem;
+padding: 10px 15px;
+cursor: pointer;
+z-index: 10;
+border-radius: 4px;
+opacity: 0;                       
+transform: translateY(-50%) scale(0); 
+pointer-events: none;              
+transition: none;                 
+}
+
+.btn-izq { left: -20px; }
+.btn-der { right: -20px; }
+
+.linea {
+position: fixed;
+left: 0;
+right: 0;
+width: 100vw;
+height: 3px;
+background-color: var(--dorado);
+z-index: 2;
+pointer-events: none;
 }
 
 
 /* =========================================
-   NAVEGACIÓN (HEADER)
+    NAVEGACIÓN (HEADER)
    ========================================= */
 header, footer, .info-card, .cuadro-artistas {
     background-color: var(--color-secundario);
@@ -324,7 +402,7 @@ button.next { right: 10px; }
 }
 
 /* =========================================
-   QUIÉNES SOMOS
+    QUIÉNES SOMOS
    ========================================= */
 .nosotros-flex {
     display: flex;
