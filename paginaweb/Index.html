@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Decoracion.css">
+    <title> Estudio de tatuajes </title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+        <a href="Index.html" class="logo-container">
+            <img src="Imagenes/Logo.png" alt="Logo de ejemplo" class="logo-img">
+            <span class="logo-text">Tatuajes</span>
+        </a>
+            <nav>
+    <ul class="nav-links">
+        <li><a href="Index.html">Inicio</a></li>
+        <li><a href="Artistas.html">Artistas</a></li>
+        <li><a href="piercings.html">Piercings</a></li> 
+        <li><a href="Quienes somos.html">Quiénes Somos</a></li>
+        <li><a href="Dondeestamos.html">Ubicacion</a></li>
+        <li id="nav-reservas" style="display: none;"><  a href="Reservas.html">Reservas</a></li>
+        <li id="nav-perfil" style="display: none;"><a href="perfil.html">Mi Perfil</a></li>
+        <li id="nav-acceso"><a href="login.html" style="color: var(--dorado);">REGISTRARSE</a></li>
+    </ul>
+</nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1> Black Raw Tatoo Studio</h1>
+            <h2>Mucho más que un estudio de tatuajes</h2>
+        </div>
+    </section>
+
+    <main class="container content-section fade">
+        <h3>Bienvenidos a Black Raw Tatoo Studio</h3>
+        <p>Tenemos un amplio catalogo de tatoos de distintos tipos de arte y diseños junto a una amplia gama de joyeria </p>
+        <p>📍Nos encontramos en calle - </p>
+    </main>
+    
+<section class="galeria-container">
+
+<div class="scroll-container">
+    <div class="revelado-tattoo">
+    <h2 class="titulo-revelado">NUESTROS TRABAJOS</h2>
+    
+
+    <button class="btn-carrusel btn-izq">◀</button>
+    <button class="btn-carrusel btn-der">▶</button>
+
+
+    <div class="imagenes-reveladas">
+    <img src="Imagenes/tatuaje1.jpg" alt="Tattoo 1" class="imagen-revelada activa">
+    <img src="Imagenes/tatuaje2.jpg" alt="Tattoo 2" class="imagen-revelada">
+    <img src="Imagenes/tatuaje3.jpg" alt="Tattoo 3" class="imagen-revelada">
+
+    </div>
+
+    <div class="linea linea-superior"></div>
+    <div class="linea linea-inferior"></div>
+    </div>
+</div>
+
+    <section class="contact-info">
+        <div class="container grid-contact fade">   
+            <div class="info-card">
+                <h4>Dirección</h4>
+                <p>Ubicacion<br>codigo postal y ciudad</p>
+            </div>
+            <div class="info-card">
+                <h4>Teléfono</h4>
+                <p>995 378 213</p>
+            </div>
+            <div class="info-card">
+                <h4>E-mail</h4>
+                <p>Tatuajes@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p> Tattoo </p>
+            <div class="legal">
+                <a href="#">Política de cookies</a> | 
+                <a href="#">Aviso legal</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Miramos si el usuario ha entrado (la moneda que guardamos en acceso.php)
+    const logueado = localStorage.getItem('usuarioLogueado') === 'true';
+
+    // 2. Seleccionamos los elementos por su ID
+    const navReservas = document.getElementById('nav-reservas');
+    const navPerfil = document.getElementById('nav-perfil');
+    const navAcceso = document.getElementById('nav-acceso');
+
+    if (logueado) {
+        // Si está logueado: Mostramos Reservas y Perfil, ocultamos Registrarse
+        if(navReservas) navReservas.style.display = 'block';
+        if(navPerfil) navPerfil.style.display = 'block';
+        if(navAcceso) navAcceso.style.display = 'none';
+    } else {
+        // Si no está logueado: Aseguramos que solo se vea Registrarse
+        if(navReservas) navReservas.style.display = 'none';
+        if(navPerfil) navPerfil.style.display = 'none';
+        if(navAcceso) navAcceso.style.display = 'block';
+    }
+});
+</script>
+    <button id="brt-toggle" aria-label="Abrir chat" title="¿Tienes alguna pregunta?">
+<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+</svg>
+</button>
+
+<div id="brt-window" role="dialog" aria-label="Chat Black Raw Tattoo Studio">
+<div id="brt-header">
+    <div class="brt-logo-dot"></div>
+    <h2>BLACK RAW TATTOO</h2>
+    <span>online</span>
+</div>
+<div id="brt-messages"></div>
+<div id="brt-quick">
+    <button class="brt-chip" onclick="askChip('Horario')">Horario</button>
+    <button class="brt-chip" onclick="askChip('Cita')">Pedir cita</button>
+    <button class="brt-chip" onclick="askChip('Precios')">Precios</button>
+    <button class="brt-chip" onclick="askChip('Estilos')">Estilos</button>
+    <button class="brt-chip" onclick="askChip('Piercings')">Piercings</button>
+</div>
+<div id="brt-input-row">
+    <input id="brt-input" type="text" placeholder="Escribe tu pregunta..." maxlength="200" />
+    <button id="brt-send" aria-label="Enviar">➤</button>
+</div>
+</div>
+    
+</script>
+    <script>
+(function() {
+const FAQ = [
+    { keys: ['horario','hora','abierto','abrir','cierra','cuando','horarios','abre','abris'], answer: 'Nuestro horario es de <strong>10:00 a 19:00h</strong>, de lunes a sábado. ¡Te esperamos! 🖤' },
+    { keys: ['cita','reserva','reservar','pedir','apuntarme','appointment','turno','agenda'], answer: 'Puedes pedir tu cita a través del <strong>formulario de nuestra web</strong>. Rellénalo y nos pondremos en contacto contigo para confirmar. 📋' },
+    { keys: ['precio','coste','cuesta','cobran','tarifas','presupuesto','cuanto','vale','euros'], answer: 'El precio depende del <strong>tamaño, estilo y detalle</strong> de cada diseño. Rellena el formulario de cita y te damos un presupuesto personalizado sin compromiso. 💰' },
+    { keys: ['estilo','estilos','tipo','tipos','haceis','hacen','especialidad','realismo','tradicional','blackout','minimalista','minimal'], answer: 'Trabajamos los siguientes estilos:\n• <strong>Realismo</strong>\n• <strong>Tradicional</strong>\n• <strong>Blackout</strong>\n• <strong>Minimalista</strong>\n\n¿Tienes algún estilo en mente? 🎨' },
+    { keys: ['piercing','piercings','pendiente','perforacion','perforación','aro','nariz','oreja','cartílago'], answer: '¡Sí, también hacemos <strong>piercings</strong>! Pide tu cita a través del formulario y te informamos de todo. 💎' },
+    { keys: ['donde','ubicacion','ubicación','direccion','dirección','lugar','sitio','local','estudio'], answer: 'Para conocer nuestra ubicación exacta, visita nuestra web o contáctanos a través del formulario. 📍' },
+    { keys: ['contacto','contactar','hablar','llamar','telefono','teléfono','whatsapp','instagram','redes'], answer: 'Puedes contactarnos a través del <strong>formulario de la web</strong> o nuestras redes sociales. ¡Respondemos rápido! 📲' },
+    { keys: ['tatuaje','tattoo','tatoo','tatuar','diseño','diseño','personalizado'], answer: 'Hacemos tatuajes <strong>personalizados</strong> en estilos realismo, tradicional, blackout y minimalista. Cuéntanos tu idea en el formulario y la hacemos realidad. 🖊️' },
+    { keys: ['hola','buenas','saludos','hey','hi','hello','buenos días','buenas tardes','buenas noches','ola'], answer: '¡Hola! 👋 Bienvenido/a a <strong>Black Raw Tattoo Studio</strong>. ¿En qué puedo ayudarte?' },
+    { keys: ['gracias','gràcies','thank','thx','mola','genial','perfecto','ok','vale','guay'], answer: '¡De nada! Si tienes más dudas, aquí estoy. 🖤' }
+];
+const FALLBACK = 'No tengo esa información ahora mismo. Te recomiendo <strong>rellenar nuestro formulario</strong> de contacto y te responderemos enseguida. 🖤';
+const win = document.getElementById('brt-window'), msgs = document.getElementById('brt-messages'), input = document.getElementById('brt-input'), btn = document.getElementById('brt-send'), tog = document.getElementById('brt-toggle');
+let opened = false;
+function getAnswer(text) {
+    const t = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    for (const faq of FAQ) { if (faq.keys.some(k => t.includes(k))) return faq.answer; } return FALLBACK;
+}
+function addMsg(html, role) {
+    const el = document.createElement('div'); el.className = 'brt-msg ' + role; el.innerHTML = html; msgs.appendChild(el); msgs.scrollTop = msgs.scrollHeight;
+}
+function send(text) {
+    if (!text.trim()) return; addMsg(text, 'user'); input.value = ''; setTimeout(() => addMsg(getAnswer(text), 'bot'), 350);
+}
+window.askChip = function(topic) { send(topic); };
+btn.addEventListener('click', () => send(input.value));
+input.addEventListener('keydown', e => { if (e.key === 'Enter') send(input.value); });
+tog.addEventListener('click', () => {
+    opened = !opened; win.classList.toggle('open', opened);
+    if (opened && msgs.children.length === 0) setTimeout(() => addMsg('¡Hola! 👋 Soy el asistente de <strong>Black Raw Tattoo Studio</strong>. ¿En qué puedo ayudarte hoy?', 'bot'), 200);
+    tog.innerHTML = opened ? `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>` : `<svg viewBox="0 0 24 24" fill="none" stroke="#e8c84a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+});
+})();
+</script>
+
+<script>
+const track = document.querySelector(".carousel-images");
+const images = document.querySelectorAll(".carousel-images img");
+
+let index = 0;
+
+function updateCarousel() {
+  track.style.transform = `translateX(-${index * 400}px)`; 
+}
+
+document.querySelector(".next").addEventListener("click", () => {
+    if (index < images.length - 1) {
+    index++;
+    }
+    updateCarousel();
+});
+
+document.querySelector(".prev").addEventListener("click", () => {
+    if (index > 0) {
+    index--;
+    }
+    updateCarousel();
+});
+</script>
+
+<script src="lineas.js"></script>
+
+</body>
+</html>
+
