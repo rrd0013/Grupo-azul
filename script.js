@@ -59,6 +59,8 @@ window.addEventListener("scroll", () => {
     if (rect.top < alturaPantalla * 0.6 && rect.bottom > alturaPantalla * 0.2) {
         carrusel.classList.add("activo");
         carrusel.classList.remove("pequeno");
+    }
+    // Cuando ya lo pasaste → hacerlo pequeño otra vez
     else if (rect.top < 0) {
         carrusel.classList.add("pequeno");
         carrusel.classList.remove("activo");
